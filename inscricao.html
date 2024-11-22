@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XVII Festival Kawasuji de Taiko</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+        
+        :root {
+            --light-red: #9e0101;
+            --light-blue: #2641c6ff;
+            --dark-blue: #101a61ff;
+            --dark-red: #530101ff;
+            --text-color: #434343;
+            --background-color: #e3dcb6;
+            --background-color2: #b8b394ff;
+        }
+
+        .roboto-light {
+            font-family: "Roboto", serif;
+            font-weight: 300;
+            font-style: normal;
+        }
+
+        .lexend-bold {
+            font-family: "Lexend", serif;
+            font-optical-sizing: auto;
+            font-weight: 800;
+            font-style: normal;
+            }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 800;
+            background-image: url('https://i.imgur.com/cQa9quZ.png');
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0;
+            background: transparent;
+            /* background-color: var(--background-color); */
+        }
+        
+        header img {
+            width: 100%;
+            height: auto;
+        }
+
+        .main-title, .sub-title {
+            position: relative;
+            z-index: 1;
+            display: block;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .main-title {
+            font-family: 'Lexend', sans-serif;
+            font-weight: 800;
+            color: var(--dark-blue);
+            font-size: 2.5em;
+            margin-bottom: 5px;
+        }
+
+        .sub-title {
+            font-family: 'Lexend', sans-serif;
+            font-weight: 800;
+            color: var(--dark-blue);
+            font-size: 1.8em;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            flex: 1;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2, h3 {
+            font-family: 'Lexend', sans-serif;
+            font-weight: 800;
+            color: var(--dark-blue);
+            text-align: center;
+        }
+
+        p, li {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 800;
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+
+        ol {
+            padding-left: 40px;
+        }
+
+        ol li {
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: var(--light-red);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 50px;
+            font-family: 'Lexend', sans-serif;
+            font-size: 1em;
+        }
+
+        button:hover {
+            background-color: var(--dark-red);
+        }
+        
+        .result-container {
+            text-align: center; /* Center the contents */
+            margin-top: 20px; /* Add spacing above */
+        }
+
+        .result {
+            font-family: 'Lexend', sans-serif;
+            font-weight: 800;
+            color: var(--light-blue);
+            font-size: 2.0em;
+            margin-bottom: 10px; /* Space between the text and the button */
+        }
+
+        .formButton {
+            background-color: var(--light-blue);
+            font-family: 'Lexend', sans-serif;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 50px;
+            font-size: 1em;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block; /* Ensures the button is sized properly */
+            margin-top: 10px;
+        }
+        
+        .formButton:hover {
+            background-color: var(--dark-blue);
+        }
+        
+        .calculator {
+            display: none;
+            text-align: left;
+            padding: 20px;
+            background-color: var(--background-color2);
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+
+        .calculator input, .calculator select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 5px;
+            margin-top: auto;
+            background-color: var(--background-color2);
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 800;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                padding: 10px 0;
+            }
+
+            .main-title {
+                font-size: 1.8em;
+            }
+
+            .sub-title {
+                font-size: 1.2em;
+            }
+
+            main {
+                padding: 10px;
+            }
+
+            .formButton {
+                font-size: 0.9em;
+                padding: 8px 16px;
+            }
+
+            .result {
+                font-size: 1.5em;
+            }
+
+            footer {
+                font-size: 0.9em;
+                padding: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- <img src="https://drive.google.com/thumbnail?id=1G2-83kGMvqq-rG1EofIVt6K5ByqlVSUX&sz=w1000" alt="Festival Kawasuji Logo" style="width: auto; height: 30%; border-radius: 8px"> -->
+        <div style="text-align: center; padding: 10px;">
+            <div class="main-title">INSCRIÇÕES GERAIS</div>
+            <div class="sub-title">XVII FESTIVAL KAWASUJI DE TAIKO</div>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <p>Depois de muita espera, estão finalmente abertas as inscrições gerais para o 17º Festival Kawasuji de Taiko!</p>
+            <ol>
+                <li>Nesta página, você irá preencher informações relevantes para a participação do seu grupo, como:
+                    <ul>
+                        <li>UF da cidade do grupo;</li>
+                        <li>Quantidade de pessoas (crianças, adultos e acompanhantes) para o cálculo da alimentação;</li>
+                        <li>Quantidade total de pessoas (crianças, adultos e acompanhantes) para o cálculo da pernoite.</li>
+                    </ul>
+                </li>
+                <li>Em seguida, a página irá te direcionar para um Formulário Google - onde os campos estarão pré-preenchidos com as informações fornecidas.</li>
+                <li>Finalize o preenchimento dos campos restantes e envie o formulário.</li>
+                <li>Siga o Instagram Oficial: <a href="https://instagram.com/festivalkawasuji" target="_blank">@festivalkawasuji</a></li>
+                <li>Em caso de dúvidas, entre em contato:
+                    <ul>
+                        <li>E-mail: <a href="mailto:festival.kawasuji@gmail.com">festival.kawasuji@gmail.com</a></li>
+                        <li>WhatsApp: +55 (19) 9 9664-6622</li>
+                    </ul>
+                </li>
+            </ol>
+            <button onclick="mostrarCalculadora()">Prosseguir</button>
+        </section>
+
+        <section class="calculator" id="calculadora">
+            <h2>Calculadora de Custos do Evento</h2>
+            <h3>Informações do Grupo</h3>
+            <p>UF da cidade do grupo:</p>
+            <select id="uf">
+                <option value="">Selecione</option>
+                <option>AC</option>
+                <option>AL</option>
+                <option>AP</option>
+                <option>AM</option>
+                <option>BA</option>
+                <option>CE</option>
+                <option>DF</option>
+                <option>ES</option>
+                <option>GO</option>
+                <option>MA</option>
+                <option>MT</option>
+                <option>MS</option>
+                <option>MG</option>
+                <option>PA</option>
+                <option>PB</option>
+                <option>PR</option>
+                <option>PE</option>
+                <option>PI</option>
+                <option>RJ</option>
+                <option>RN</option>
+                <option>RS</option>
+                <option>RO</option>
+                <option>RR</option>
+                <option>SC</option>
+                <option>SP</option>
+                <option>SE</option>
+                <option>TO</option>
+            </select>
+
+            <h3>Informações dos Membros</h3>
+            <p>Quantidade de adultos (alimentação):</p>
+            <input type="number" id="qtdAlimentacao" value="0" oninput="validarCampo(this)">
+            <p>Quantidade de crianças (alimentação):</p>
+            <input type="number" id="qtdAlimentacaoCrianca" value="0" oninput="validarCampo(this)">
+            <p>Quantidade de adultos + crianças (pernoite):</p>
+            <input type="number" id="qtdHospedagem" value="0" oninput="validarCampo(this)">
+
+            <button onclick="calcularTotal()">Calcular Total</button>
+
+            <div class="result-container">
+                <p class="result" id="resultado"></p>
+                <a id="linkFormulario" class="hidden formButton" href="www.RyuuNakamura.com.br" target="_blank">Ir para Formulário</a>
+            </div>
+
+        </section>
+
+        <section id="observacoes" class="observations hidden">
+            <h2>Observações</h2>
+            <ul>
+                <li>Inclua acompanhantes nos números da seção "Informações dos Membros".</li>
+                <li>O valor da inscrição cobre participação no Workshop Geral e Show.</li>
+                <li>O valor da alimentação envolve 3 refeições e 4 cafés.</li>
+                <li>O valor de pernoite é de R$ 30/pessoa.</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Contato: festival.kawasuji@gmail.com | WhatsApp: +55 (19) 9 9664-6622 | Lucas Ryu Nakamura</p>
+    </footer>
+
+    <script>
+        function mostrarCalculadora() {
+            document.getElementById("calculadora").style.display = "block";
+            document.getElementById("observacoes").classList.remove("hidden");
+            document.getElementById("observacoes").style.display = "block";
+        }
+
+        function validarCampo(input) {
+            if (input.value < 0) input.value = 0;
+            input.value = Math.floor(input.value);
+        }
+
+        function calcularTotal() {
+            const uf = document.getElementById("uf").value;
+            const custoUf = (uf === "SP") ? 1000 : 750;
+
+            const custoAlimentacao = 192;  // Custo por alimentação
+            const custoAlimentacaoCrianca = 123;  // Custo por alimentação de criança
+
+            const custoHospedagem = 30;  // Custo por hospedagem
+
+            const qtdAlimentacao = parseInt(document.getElementById("qtdAlimentacao").value) || 0;
+            const qtdAlimentacaoCrianca = parseInt(document.getElementById("qtdAlimentacaoCrianca").value) || 0;
+
+            const qtdHospedagem = parseInt(document.getElementById("qtdHospedagem").value) || 0;
+  
+
+            const totalAlimentacao = qtdAlimentacao * custoAlimentacao + qtdAlimentacaoCrianca * custoAlimentacaoCrianca;
+            const totalHospedagem = qtdHospedagem * custoHospedagem;
+            const total = totalAlimentacao + totalHospedagem + custoUf;
+
+            // IDs dos campos no formulário (substitua pelos IDs reais que você obteve no Passo 2)
+            const idUF = "entry.369296670"; 
+
+            const idAlimentacao = "entry.1549837914"; 
+            const idAlimentacaoCrianca = "entry.424212885";
+            
+            const idHospedagem = "entry.1083938500";  
+
+            // URL base do formulário (substitua pela URL do seu formulário, sem os parâmetros entry)
+            const formUrlBase = "https://docs.google.com/forms/d/e/1FAIpQLSfjykJCpEdSFS8YzgrZOHKo9gx0Z0WKYO4BLOKmwOynmsWKIw/viewform?usp=pp_url&";  // Substitua por sua URL base
+           
+            // Crie a URL com os parâmetros pré-preenchidos
+            const formUrl = formUrlBase + "&" + idUF + "=" + uf + "&" + idAlimentacao + "=" + qtdAlimentacao + "&" + idAlimentacaoCrianca + "=" + qtdAlimentacaoCrianca + "&" + idHospedagem + "=" + qtdHospedagem;
+           
+            console.log("URL do Formulário: " + formUrl);
+            document.getElementById("resultado").innerText = `Valor Total: R$ ${total}`;
+            document.getElementById("linkFormulario").href = formUrl;
+            document.getElementById("linkFormulario").classList.remove("hidden");
+        }
+    </script>
+</body>
+</html>
