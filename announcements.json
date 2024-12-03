@@ -1,0 +1,34 @@
+{
+    "posts": [
+        {
+            "title": "Novo Evento de Primavera",
+            "subtitle": "Celebre a chegada da primavera conosco!",
+            "date": "2023-10-01",
+            "description": "Estamos animados em anunciar nosso evento de primavera com muitas atividades e surpresas. Venha participar!",
+            "image": "spring_event.jpg"
+            "url": "/primavera"
+        },
+        {
+            "title": "Atualização de Sistema",
+            "subtitle": "Melhorias e correções de bugs",
+            "date": "2023-09-15",
+            "description": "Lançamos uma nova atualização do sistema que inclui várias melhorias de desempenho e correções de bugs.",
+            "image": "system_update.jpg"
+        },
+        {
+            "title": "Feira de Inverno",
+            "subtitle": "Diversão garantida para toda a família",
+            "date": "2023-12-05",
+            "description": "Nossa feira de inverno está chegando! Prepare-se para muita diversão, comidas típicas e atrações especiais.",
+            "image": "winter_fair.jpg"
+        },
+        {
+          "title": "Feira de Verão",
+          "subtitle": "Kawasuji é muito daora",
+          "date": "2023-12-05",
+          "description": "Nossa feira de inverno está chegando! Prepare-se para muita diversão, comidas típicas e atrações especiais.",
+          "image": "/gmikio.github.io-kawasuji2025/public/Fofinho.png"
+        }
+    ]
+}
+
